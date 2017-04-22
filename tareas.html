@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <title>Tareas</title>
+</head>
+<body>
+<script type="text/javascript">
+    createTable();
+    function createTable() {
+        var tabla = document.createElement('table');
+        tabla.appendChild(cabecera());
+        var familia = ['Madre','Padre','Godofredo','Anastasio','Anacleto'];
+        var ronda = 0;
+
+        for(var i = 0; i < 52; i++){
+            var fila = document.createElement('tr');
+            for(var j = 0; j < 5; j++){
+                var celda = document.createElement('td');
+                var textCelda;
+
+                if((ronda + j) < 5) textCelda = document.createTextNode(familia[ronda+j]);
+                else textCelda = document.createTextNode(familia[(ronda+j) - 5]);
+
+                celda.appendChild(textCelda);
+                fila.appendChild(celda);
+            }
+            if (ronda < 5)ronda++;
+            else ronda = 0;
+            tabla.appendChild(fila);
+        }
+
+        document.body.appendChild(tabla);
+    }
+
+    function cabecera() {
+        var fila = document.createElement('tr');
+        var tareas = ['Limpiar platos','Poner la mesa','Fregar','Barrer','Descansar'];
+        for (var i = 0; i < 5; i++) {
+            var celda = document.createElement('th');
+            var textCelda = document.createTextNode(tareas[i]);
+            celda.appendChild(textCelda);
+            fila.appendChild(celda);
+        }
+        return fila;
+    }
+</script>
+</body>
+</html>
