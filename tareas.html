@@ -35,21 +35,26 @@
         var familia = ['Madre','Padre','Godofredo','Anastasio','Anacleto'];
         var ronda = 0;
         var pRonda = true;
-        var hRonda = 0;
+        var hRonda = 2;
 
         for(var i = 0; i < 52; i++){
             var fila = document.createElement('tr');
+
             //familia
             for(var j = 0; j < 5; j++){
                 var celda = document.createElement('td');
                 var textCelda;
 
                 if((ronda + j) < 5) textCelda = document.createTextNode(familia[ronda+j]);
-                else textCelda = document.createTextNode(familia[(ronda+j) - 5]);
+                else textCelda = document.createTextNode(familia[(ronda + j) - 5]);
 
                 celda.appendChild(textCelda);
                 fila.appendChild(celda);
             }
+
+            if (ronda < 4) ronda++;
+            else ronda = 0;
+
             //Padres
             for (var k = 0; k < 2; k++){
                 var celda = document.createElement('td');
@@ -66,18 +71,25 @@
 
                 celda.appendChild(textCelda);
                 fila.appendChild(celda);
-
             }
-            //Hijos
-            for (var l = 0; l < 3; l++){
-
-            }
-
-            if (ronda < 4)ronda++;
-            else ronda = 0;
 
             if (pRonda)pRonda = false;
             else pRonda = true;
+
+            //Hijos
+            for (var l = 0; l < 3; l++){
+                var celda = document.createElement('td');
+                var textCelda;
+
+                if((hRonda + l) < 5) textCelda = document.createTextNode(familia[hRonda+l]);
+                else textCelda = document.createTextNode(familia[(hRonda + l) - 3]);
+
+                celda.appendChild(textCelda);
+                fila.appendChild(celda);
+            }
+
+            if (hRonda < 4) hRonda++;
+            else hRonda = 2;
 
             tabla.appendChild(fila);
         }
@@ -87,7 +99,7 @@
 
     function cabecera() {
         var fila = document.createElement('tr');
-        var tareas = ['Limpiar platos','Poner la mesa','Fregar','Barrer','Descansar','Poner la lavadora','Planchar','Ordenar habitación','Hacer la cama','Hacer la cena'];
+        var tareas = ['Limpiar platos','Poner la mesa','Fregar','Barrer','Descansar','Poner la lavadora','Planchar','Ordenar la habitación','Hacer la cama','Hacer la cena'];
         for (var i = 0; i < 10; i++) {
             var celda = document.createElement('th');
             var textCelda = document.createTextNode(tareas[i]);
