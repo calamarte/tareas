@@ -12,7 +12,7 @@
             border-collapse: collapse;
         }
 
-        td{
+        td,th{
             border: 2px solid black;
             text-align: center;
         }
@@ -31,6 +31,7 @@
     createTable();
     function createTable() {
         var tabla = document.createElement('table');
+        tabla.appendChild(table());
         tabla.appendChild(cabecera());
         var familia = ['Madre','Padre','Godofredo','Anastasio','Anacleto'];
         var ronda = 0;
@@ -105,6 +106,21 @@
             var textCelda = document.createTextNode(tareas[i]);
             celda.appendChild(textCelda);
             fila.appendChild(celda);
+        }
+        return fila;
+    }
+
+    function table() {
+        var fila = document.createElement('tr');
+        var celdas = [document.createElement('th'),document.createElement('th'),document.createElement('th')];
+        var textCeldas = [document.createTextNode('Familia'),document.createTextNode('Padres'),document.createTextNode('Hijos')];
+        celdas[0].colSpan = '5';
+        celdas[1].colSpan = '2';
+        celdas[2].colSpan = '3';
+
+        for (var i = 0; i < 3; i++){
+            celdas[i].appendChild(textCeldas[i]);
+            fila.appendChild(celdas[i]);
         }
         return fila;
     }
