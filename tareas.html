@@ -52,14 +52,33 @@
             }
             //Padres
             for (var k = 0; k < 2; k++){
+                var celda = document.createElement('td');
+                var textCelda;
+
+                if(pRonda){
+                    textCelda = document.createTextNode(familia[0]);
+                    pRonda = false;
+                }
+                else{
+                    textCelda = document.createTextNode(familia[1]);
+                    pRonda = true;
+                }
+
+                celda.appendChild(textCelda);
+                fila.appendChild(celda);
 
             }
             //Hijos
             for (var l = 0; l < 3; l++){
 
             }
+
             if (ronda < 4)ronda++;
             else ronda = 0;
+
+            if (pRonda)pRonda = false;
+            else pRonda = true;
+
             tabla.appendChild(fila);
         }
 
@@ -78,18 +97,6 @@
         return fila;
     }
 
-    function tareasFamilia(ronda,fila) {
-        for(var j = 0; j < 5; j++){
-            var celda = document.createElement('td');
-            var textCelda;
-
-            if((ronda + j) < 5) textCelda = document.createTextNode(familia[ronda+j]);
-            else textCelda = document.createTextNode(familia[(ronda+j) - 5]);
-
-            celda.appendChild(textCelda);
-            fila.appendChild(celda);
-        }
-    }
 </script>
 </body>
 </html>
