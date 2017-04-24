@@ -3,6 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Tareas</title>
+    <style>
+        body{
+            background-color: blue;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        td{
+            border: 2px solid black;
+            text-align: center;
+        }
+        tr:hover{
+            background-color: antiquewhite;
+        }
+
+        tr:first-child{
+            background-color: aqua;
+        }
+
+    </style>
 </head>
 <body>
 <script type="text/javascript">
@@ -12,9 +34,12 @@
         tabla.appendChild(cabecera());
         var familia = ['Madre','Padre','Godofredo','Anastasio','Anacleto'];
         var ronda = 0;
+        var pRonda = true;
+        var hRonda = 0;
 
         for(var i = 0; i < 52; i++){
             var fila = document.createElement('tr');
+            //familia
             for(var j = 0; j < 5; j++){
                 var celda = document.createElement('td');
                 var textCelda;
@@ -24,6 +49,14 @@
 
                 celda.appendChild(textCelda);
                 fila.appendChild(celda);
+            }
+            //Padres
+            for (var k = 0; k < 2; k++){
+
+            }
+            //Hijos
+            for (var l = 0; l < 3; l++){
+
             }
             if (ronda < 4)ronda++;
             else ronda = 0;
@@ -35,14 +68,27 @@
 
     function cabecera() {
         var fila = document.createElement('tr');
-        var tareas = ['Limpiar platos','Poner la mesa','Fregar','Barrer','Descansar'];
-        for (var i = 0; i < 5; i++) {
+        var tareas = ['Limpiar platos','Poner la mesa','Fregar','Barrer','Descansar','Poner la lavadora','Planchar','Ordenar habitación','Hacer la cama','Hacer la cena'];
+        for (var i = 0; i < 10; i++) {
             var celda = document.createElement('th');
             var textCelda = document.createTextNode(tareas[i]);
             celda.appendChild(textCelda);
             fila.appendChild(celda);
         }
         return fila;
+    }
+
+    function tareasFamilia(ronda,fila) {
+        for(var j = 0; j < 5; j++){
+            var celda = document.createElement('td');
+            var textCelda;
+
+            if((ronda + j) < 5) textCelda = document.createTextNode(familia[ronda+j]);
+            else textCelda = document.createTextNode(familia[(ronda+j) - 5]);
+
+            celda.appendChild(textCelda);
+            fila.appendChild(celda);
+        }
     }
 </script>
 </body>
